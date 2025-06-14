@@ -8,13 +8,7 @@ public class TankView : MonoBehaviour
     private float _rotation;
 
     public Rigidbody rb;
-
-    public void SetTankController(TankController tankController)
-    {
-        _tankController = tankController;
-    }
-
-    public Rigidbody GetRigidbody() => rb;
+    public MeshRenderer[] childs;
 
     private void Start()
     {
@@ -36,5 +30,20 @@ public class TankView : MonoBehaviour
     {
         _movement = Input.GetAxis("Vertical");
         _rotation = Input.GetAxis("Horizontal");
+    }
+
+    public void SetTankController(TankController tankController)
+    {
+        _tankController = tankController;
+    }
+
+    public Rigidbody GetRigidbody() => rb;
+
+    public void ChangeColor(Material color)
+    {
+        for (int i = 0; i < childs.Length; i++)
+        {
+            childs[i].material = color;
+        }
     }
 }
